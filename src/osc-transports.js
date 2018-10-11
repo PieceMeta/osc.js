@@ -86,18 +86,17 @@ var osc = osc || require("./osc.js"),
         }
     };
 
-/*
     osc.SLIPPort = function (options) {
-        var that = this;
+        // var that = this;
         var o = this.options = options || {};
         o.useSLIP = o.useSLIP === undefined ? true : o.useSLIP;
 
-        this.decoder = new slip.Decoder({
-            onMessage: this.decodeOSC.bind(this),
-            onError: function (err) {
-                that.emit("error", err);
-            }
-        });
+        // this.decoder = new slip.Decoder({
+        //     onMessage: this.decodeOSC.bind(this),
+        //     onError: function (err) {
+        //         that.emit("error", err);
+        //     }
+        // });
 
         var decodeHandler = o.useSLIP ? this.decodeSLIPData : this.decodeOSC;
         this.on("data", decodeHandler.bind(this));
@@ -105,7 +104,7 @@ var osc = osc || require("./osc.js"),
 
     p = osc.SLIPPort.prototype = Object.create(osc.Port.prototype);
     p.constructor = osc.SLIPPort;
-*/
+
     p.encodeOSC = function (packet) {
         // TODO gh-39: This is unsafe; we should only access the underlying
         // buffer within the range of its view.
@@ -113,20 +112,19 @@ var osc = osc || require("./osc.js"),
         var framed;
 
         try {
-            var encoded = osc.writePacket(packet, this.options);
-            framed = slip.encode(encoded);
+            // var encoded = osc.writePacket(packet, this.options);
+            // framed = slip.encode(encoded);
         } catch (err) {
             this.emit("error", err);
         }
 
         return framed;
     };
-/*
+
     p.decodeSLIPData = function (data, packetInfo) {
         // TODO: Get packetInfo through SLIP decoder.
         this.decoder.decode(data, packetInfo);
     };
-*/
 
     // Unsupported, non-API function.
     osc.relay = function (from, to, eventName, sendFnName, transformFn, sendArgs) {

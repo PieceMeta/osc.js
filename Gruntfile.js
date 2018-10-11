@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     var files = {
         moduleDeps: [
             "node_modules/long/dist/long.js",
-            "node_modules/slip/src/slip.js",
+            // "node_modules/slip/src/slip.js",
             "node_modules/wolfy87-eventemitter/EventEmitter.js"
         ],
 
