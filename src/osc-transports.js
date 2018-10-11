@@ -10,7 +10,7 @@
 /* global require, module */
 
 var osc = osc || require("./osc.js"),
-    slip = slip || require("slip"),
+    // slip = slip || require("slip"),
     EventEmitter = EventEmitter || require("events").EventEmitter;
 
 (function () {
@@ -86,7 +86,7 @@ var osc = osc || require("./osc.js"),
         }
     };
 
-
+/*
     osc.SLIPPort = function (options) {
         var that = this;
         var o = this.options = options || {};
@@ -105,7 +105,7 @@ var osc = osc || require("./osc.js"),
 
     p = osc.SLIPPort.prototype = Object.create(osc.Port.prototype);
     p.constructor = osc.SLIPPort;
-
+*/
     p.encodeOSC = function (packet) {
         // TODO gh-39: This is unsafe; we should only access the underlying
         // buffer within the range of its view.
@@ -121,12 +121,12 @@ var osc = osc || require("./osc.js"),
 
         return framed;
     };
-
+/*
     p.decodeSLIPData = function (data, packetInfo) {
         // TODO: Get packetInfo through SLIP decoder.
         this.decoder.decode(data, packetInfo);
     };
-
+*/
 
     // Unsupported, non-API function.
     osc.relay = function (from, to, eventName, sendFnName, transformFn, sendArgs) {
